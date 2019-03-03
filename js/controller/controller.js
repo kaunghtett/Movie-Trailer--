@@ -48,10 +48,29 @@ class Controller {
     getUpcomingMovieData(data) {
         this.movieObjects = [];
         for (let movie of data) {
-            const movieObj = new MovieItemModel(movie.id, movie.title, movie.poster_path, movie.overview, "");
+            let rating = 0;
+            if(localStorage.getItem(movie.id)){
+                rating = localStorage.getItem(movie.id);
+            }
+
+            let favouriteMovies;
+            let favourite = false;
+            if(localStorage.getItem("favourite")){
+                favouriteMovies = localStorage.getItem("favourite");
+                if(favouriteMovies.includes(movie.id)){
+                    favourite = true;
+                }
+            }
+            console.log(movie.id+"value"+rating);
+            const movieObj = new MovieItemModel(movie.id, movie.title, movie.poster_path, movie.overview, "",rating, favourite);
             this.movieObjects.push(movieObj);
         }
         return this.movieObjects;
+    }
+
+    storeRating(movieId, ratingValue){
+        this.movieItemModel.setRating(movieId, ratingValue);
+        this.movieListView.rateMovie(movieId, ratingValue);
     }
 
 

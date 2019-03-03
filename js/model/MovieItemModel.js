@@ -1,13 +1,25 @@
 import APIDataModel from "./APIModel.js";
 
 class Movie extends APIDataModel{
-    constructor(id,title,poster,overview,link){
+    constructor(id,title,poster,overview,link,rating, favourite){
         super();
         this.id = id;
         this.title = title;
         this.poster = poster;        
         this.overview = overview;
-        this.link =link;        
+        this.link =link;
+        this.rating = rating; 
+        this.favourite = favourite;   
+    }
+
+    setRating(movieId, ratingValue){
+        console.log("store in local"+ movieId +"value" + ratingValue);
+        this.rating = ratingValue;
+        localStorage.setItem(movieId, ratingValue);
+    }
+
+    getRating(){
+        return localStorage.getItem(this.id);
     }
     
 

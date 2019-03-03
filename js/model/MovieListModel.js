@@ -8,6 +8,7 @@ class MovieListModel extends APIDataModel {
     }
 
     async fetchUpcomingMovie(key){
+
         const fetchedData = await fetch(this.getUpcomingApiUrl(key));
         const jsonData = await fetchedData.json();
         return jsonData.results;

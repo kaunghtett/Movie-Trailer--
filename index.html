@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
@@ -36,28 +38,33 @@
     <div class="col s12 m4 l3">
       <div class="card">
         <div class="card-image">
+         
           <img src="{{this.poster}}">
           <span class="card-title">{{this.title}}</span>
-          <a class="detail-view-button btn-floating halfway-fab waves-effect waves-light red" href="#" data-id={{this.id}}>
-            <i class="material-icons">add</i>
-
-          </a>
-
+          
+     
+        <a class="detail-view-button btn-floating halfway-fab waves-effect waves-light red" href="#" data-id={{this.id}}>
+            {{this.favourite}}            
+            </a>
         </div>
+        
+        <div class="star-wrapper" id="{{this.rateId}}">
+          {{this.ratingStars}}
+        
+        </div>
+        <a class="btn btn-info" href="#" data-id={{this.id}}>
+            <i class="material-icons">add</i>            
+            </a>
+
         <div class="card-content">
-            <div id='rating'>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              </div>
+         
+           
           <p>{{this.overview}}</p>
 
         </div>
       </div>
     </div>
+   
   </template>
 
   <template id="movie-detail-template">
